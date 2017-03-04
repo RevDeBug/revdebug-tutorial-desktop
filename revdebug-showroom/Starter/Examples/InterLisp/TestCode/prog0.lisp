@@ -1,0 +1,5 @@
+(+ 5 10 15)
+(print "Ahoy, world!") 
+(set 'sum (+ 1 2 3 4 5))
+(set 'diff (- sum 9))
+(* sum diff)
