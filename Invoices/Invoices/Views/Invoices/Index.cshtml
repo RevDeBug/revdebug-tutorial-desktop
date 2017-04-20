@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Invoices.Models.Invoice>
+
+@{
+    ViewBag.Title = "Invoices";
+}
+<div class="col-lg-9">
+    <div class="body-content">
+        <div class="row">
+            <h2>Invoices <a class="help" href="#">help <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a></h2>
+
+        </div>
+        <div class="row">
+            <hr />
+            <table class="table tableInvoices">
+                <thead>
+                    <tr>
+                        <th>
+                            Invoice number
+                        </th>
+                        <th>
+                            Contractor
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IssueDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DueDate)
+                        </th>
+                        <th>
+                            Sum
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+            {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvoiceId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Contractor.FirstName)
+                                @Html.DisplayFor(modelItem => item.Contractor.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IssueDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DueDate)
+                            </td>
+                            @{
+                                double sum = 0;
+                                foreach (var entry in item.InvoiceEntries)
+                                {
+                                    sum += (entry.Product.UnitPrice + (entry.Product.UnitPrice * entry.Product.Tax / 100)) * entry.Quantity;
+                                }
+                            }
+                            <td>
+                                $
+                                @sum
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { id = item.InvoiceId })
+                            </td>
+                        </tr>
+                                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3">
+    @{
+        Html.RenderPartial("sideMenu");
+    }
+</div>
+
