@@ -64,48 +64,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="Examples\BossPresence\Config.cs" />
-    <Compile Include="Examples\BossPresence\Constants.cs" />
-    <Compile Include="Examples\BossPresence\NetworkUtils.cs" />
-    <Compile Include="Examples\BossPresence\Program.cs" />
     <Compile Include="Examples\CarsEconomy\Csv2Xml.cs" />
     <Compile Include="Examples\CarsEconomy\FuelUsageConverter.cs" />
     <Compile Include="Examples\CarsEconomy\Program.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\MathOperations.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\NormOpDefun.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\NormOperation.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\NormOperationOneArg.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\NormOpIf.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\NormOpQuote.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpAddition.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpCar.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpCdr.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpCons.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpDivision.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpEqual.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOperation.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOperationOneArg.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOperationTwoArgs.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpFunction.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpGreater.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpGreaterOrEqual.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpLess.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpLessOrEqual.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpList.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpMultiplication.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpNotEqual.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpPrint.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpSet.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Actions\PreOpSubtraction.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Converter.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Evaluator.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Interpreter.cs" />
-    <Compile Include="Examples\InterLisp\Classes\ISExpression.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Operations.cs" />
-    <Compile Include="Examples\InterLisp\Classes\SeList.cs" />
-    <Compile Include="Examples\InterLisp\Classes\TokenizedEntry.cs" />
-    <Compile Include="Examples\InterLisp\Classes\Tokenizer.cs" />
-    <Compile Include="Examples\InterLisp\Program.cs" />
+    <Compile Include="Examples\CoreGreeter\Program.cs" />
+    <Compile Include="Examples\Loops\Looper.cs" />
     <Compile Include="Examples\MultiThread\MyThread.cs" />
     <Compile Include="Examples\MultiThread\Program.cs" />
     <Compile Include="Examples\MultiThread\ThreadEventArgs.cs" />
@@ -141,9 +104,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Examples\BossPresence\Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\boss_back.png" />
     <Resource Include="Resources\boss_front.png" />

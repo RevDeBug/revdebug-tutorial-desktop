@@ -40,7 +40,11 @@ namespace Starter.Examples.CarsEconomy
             {
                 var carName = node["Car"].InnerText;
                 var country = node["Origin"].InnerText;
-                var mpg = node["MPG"].InnerText.ToString(new CultureInfo("en-EN"));
+                //This unexpected exception is expected.
+                //When you stop debugging you'll see Exceptions/Search window.
+                //Double click on exception marker (red) to jump to exception stete.
+                //Thank's to the overlayed values you can immediatelly spot root of an exception and faulty node.
+                var mpg = node["MPG"].InnerText.ToString(new CultureInfo("en-us"));
 
                 double value;
                 Double.TryParse(mpg, NumberStyles.Float, englishCulture, out value);

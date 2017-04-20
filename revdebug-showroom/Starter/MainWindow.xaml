@@ -21,40 +21,95 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label x:Name="lblGreeting" HorizontalAlignment="Center" Content="{Binding Greeting}" FontSize="24"></Label>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
             <StackPanel Width="200" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Image Source="Resources/logo-color.png"></Image>
+                <StackPanel.Resources>
+                    <Style x:Key="{x:Type Image}" TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style x:Key="RDBButton" TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Style="{StaticResource RDBButton}" Background="Transparent" BorderBrush="{x:Null}" Click="Button_Home_Click" Focusable="False">
+                    <Image Source="Resources/logo-color.png"></Image>
+                </Button>
             </StackPanel>
-            <StackPanel Width="50" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Canvas Width="50" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Boss watch" Click="Button_Click" ></Button>
-                <Button Content="Cars" Click="Button_Click_1" ></Button>
-                <Button Content="MultiThread" Click="Button_Click_3"></Button>
-                <Button Content="Lisp" Click="Button_Click_2"></Button>
+            <StackPanel Orientation="Horizontal" Margin="20,10">
+                <Button Content="Hello, RevDeBug" Click="Button_Hello_Click" Width="150"></Button>
+                <Button Content="Exception" Click="Button_Exception_Click" ></Button>
+                <Button Content="Threads" Click="Button_Threads_Click"></Button>
+                <Button Content="Loops" Click="Button_Loops_Click"></Button>
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2">
             <TabControl Name="tc_Main">
+                <TabItem >
+                    <Grid>
+                        <TextBlock Margin="10" FontSize="16" TextWrapping="WrapWithOverflow" Padding="50,5"> 
+                                <Run Text="RevDeBug is a solution that improves the effectiveness of root cause detection and elimination of bugs.&#x0a;Provided examples will help you learn how to use our Reverse debugger as efficient as possible.&#x0a;Click on one of the buttons and you will get further instructions."/>
+                        </TextBlock>
+                    </Grid>
+                </TabItem>
                 <TabItem Header="Load Data" >
                     <Grid>
-                        <Image Name="BossImage"></Image>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Name="HelloResult"  Margin="10" FontSize="16" TextWrapping="WrapWithOverflow" Padding="50,5" Text="This example will introduce you to basic ideas of reverse debbuging&#x0a;Click on Execute button and stop debugging. Your recording will be loaded automatically.&#x0a;Follow instructions in comments." ></TextBlock>
+                        <Button Click="ExecuteGreeter" Grid.Row="1" Content="Execute" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
                     </Grid>
                 </TabItem>
                 <TabItem>
                     <Grid>
-                        <TextBlock Name="FuelResult"  Margin="10" FontSize="20"></TextBlock>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Name="FuelResult"  Margin="10" FontSize="16" TextWrapping="WrapWithOverflow" Padding="50,5" Text="This example will throw an exception.&#x0a;No worries, it is expected.&#x0a;Click on execute and find out how to fix bugs with RevDeBug"></TextBlock>
+                        <Button Click="ExecuteException" Grid.Row="1" Content="Execute" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
                     </Grid>
                 </TabItem>
                 <TabItem>
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <TextBlock Name="DemoResult" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="10" FontSize="16"></TextBlock>
+                            <TextBlock Name="DemoResult" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="10" FontSize="16" Padding="50,5" Text="Following sample will run 30 threads parallel.&#x0a;After debugging, when your recording is loaded open Threads view from RevDeBug menu,&#x0a;to see, how consequent threads was executed."></TextBlock>
                         </ScrollViewer>
+                        <Button Click="ExecuteThreads" Grid.Row="1" Content="Execute" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
+                    </Grid>
+                </TabItem>
+
+                <TabItem>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <TextBlock Name="LoopsResult" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="10" FontSize="16" Padding="50,5" Text="Learn how you can easily jump through next iterations of loops with RevDeBug.&#x0a;Hit Execute, stop debugging and find out how RevDeBugs helps with loops."></TextBlock>
+                        </ScrollViewer>
+                        <Button Click="ExecuteLoops" Grid.Row="1" Content="Execute" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
                     </Grid>
                 </TabItem>
             </TabControl>
+            <Button Name="TerminateButton" Click="Terminate" Grid.Row="1" Content="Close app and load recording" Visibility="Collapsed" Width="Auto" Height="60" Padding="10,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
         </Grid>
     </Grid>
 </Window>

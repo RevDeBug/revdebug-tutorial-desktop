@@ -6,7 +6,10 @@
         
         public static double Mpg2Liters(double mpg)
         {
-            if (mpg == 0.0) return 0;
+            if (mpg == 0.0)
+            {
+                return 0;
+            }
             return MpgFactor / mpg;
         }
 
