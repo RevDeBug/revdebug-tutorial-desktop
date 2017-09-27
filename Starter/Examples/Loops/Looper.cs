@@ -44,15 +44,28 @@ namespace Starter.Examples.Loops
         // Find Anything you want in your code, with advanced search
         private void DontTryAtHome()
         {
-            //$BaseState.Kind == StateKind.Catch && !$CatchState.IsUnhandled && $CatchState.TypeName == "System.FormatException"
+            //Filter out all empty try/catches: $BaseState.Kind == StateKind.Catch && !$CatchState.IsUnhandled && $Statement.Children.Count == 0
             try
             {
                 string str = "IAmNotANumber";
                 int.Parse(str);
             }
-            catch { }
+            catch
+            {
+            }
 
-            //$VariableState.TypeName == "System.String" && !String.IsNullOrWhiteSpace($VariableState.Value) && $VariableState.Value.All(Char.IsDigit)
+            //Find try/catch Parsing: $BaseState.Kind == StateKind.Catch && !$CatchState.IsUnhandled && $CatchState.TypeName == "System.FormatException"
+            try
+            {
+                string str = "IAmNotANumber";
+                int.Parse(str);
+            }
+            catch(Exception e)
+            {
+                var zm = e.Message;
+            }
+
+            //Find Numerals stored as strings: $VariableState.TypeName == "System.String" && !String.IsNullOrWhiteSpace($VariableState.Value) && $VariableState.Value.All(Char.IsDigit)
             string IAmANumber = "1235123";
             if (IAmANumber == "12345312")
             {
