@@ -1,43 +1,61 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Starter.Examples.MultiThread;
 using Starter.Examples.Loops;
+using System.Windows.Controls;
 
 namespace Starter
 {
     public partial class MainWindow
     {
+        public Brush RdbRedBrush;
+        public Brush RdbGrayBrush;
 
         //Use arrows in control panel to move through recording.
         public MainWindow()
         {
             InitializeComponent();
+            var converter = new BrushConverter();
+            RdbRedBrush = (Brush)converter.ConvertFromString("#d22027");
+            RdbGrayBrush = (Brush)converter.ConvertFromString("#8c8c8d");
         }
-        
-        private void Button_Home_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Home_Click(object sender, MouseButtonEventArgs e)
         {
+            ResetButtonsStyle();
             tc_Main.SelectedIndex = 0;
         }
 
         private void Button_Hello_Click(object sender, RoutedEventArgs e)
         {
             tc_Main.SelectedIndex = 1;
+            ResetButtonsStyle();
+            HelloButton.Foreground = RdbRedBrush;
         }
 
         private void Button_Exception_Click(object sender, RoutedEventArgs e)
         {
             tc_Main.SelectedIndex = 2;
+            ResetButtonsStyle();
+            ExceptionButton.Foreground = RdbRedBrush;
         }
 
         private void Button_Loops_Click(object sender, RoutedEventArgs e)
         {
             tc_Main.SelectedIndex = 4;
+            ResetButtonsStyle();
+            LoopsButton.Foreground = RdbRedBrush;
         }
 
         private void Button_Threads_Click(object sender, RoutedEventArgs e)
         {
             tc_Main.SelectedIndex = 3;
+            ResetButtonsStyle();
+            ThreadsButton.Foreground = RdbRedBrush;
         }
 
         public delegate void UpdateTextCallback(string message);
@@ -45,6 +63,14 @@ namespace Starter
         private void ThreadStateChanged(object sender, EventArgs e)
         {
             DemoResult.Dispatcher.Invoke(new UpdateTextCallback(this.AppendText), new object[] { (e as ThreadEventArgs).Message + Environment.NewLine });
+        }
+
+        private void ResetButtonsStyle()
+        {
+            HelloButton.Foreground = RdbGrayBrush;
+            ExceptionButton.Foreground = RdbGrayBrush;
+            LoopsButton.Foreground = RdbGrayBrush;
+            ThreadsButton.Foreground = RdbGrayBrush;
         }
 
         private void AppendText(string value)
@@ -110,5 +136,19 @@ namespace Starter
         {
             Close();
         }
+
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+       
     }
 }
