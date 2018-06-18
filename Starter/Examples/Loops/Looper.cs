@@ -24,7 +24,7 @@ namespace Starter.Examples.Loops
 
             var nodes = root.SelectNodes("CarDetails");
 
-            var englishCulture = new CultureInfo("en-EN");
+            var englishCulture = new CultureInfo("en-US");
 
             if (nodes == null) return myCars;
 

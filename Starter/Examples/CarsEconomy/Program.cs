@@ -28,7 +28,7 @@ namespace Starter.Examples.CarsEconomy
             var nodes = root.SelectNodes("CarDetails");
             
             //set culture info for proper reading float values
-            var englishCulture = new CultureInfo("en-EN");
+            var englishCulture = new CultureInfo("en-US");
 
             if (nodes == null) return false;
 
