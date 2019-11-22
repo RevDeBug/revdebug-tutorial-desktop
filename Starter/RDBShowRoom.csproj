@@ -73,6 +73,7 @@
     <Compile Include="Examples\CarsEconomy\Csv2Xml.cs" />
     <Compile Include="Examples\CarsEconomy\FuelUsageConverter.cs" />
     <Compile Include="Examples\CarsEconomy\Program.cs" />
+    <Compile Include="Examples\CarsEconomy\RdbExtensions.cs" />
     <Compile Include="Examples\CoreGreeter\Program.cs" />
     <Compile Include="Examples\Loops\Looper.cs" />
     <Compile Include="Examples\MultiThread\MyThread.cs" />
@@ -102,6 +103,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <AdditionalFiles Include="Project.rdbdisplay" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
